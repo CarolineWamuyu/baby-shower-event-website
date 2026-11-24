@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boy or Girl? 💙💗 — Baby Shower</title>
+  <meta name="description" content="A tiny little secret is about to change everything. Join our gender reveal baby shower!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Fredoka:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Full-page canvases: ambient particles + confetti -->
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Tiny nav -->
+  <nav class="nav" aria-label="Main">
+    <a href="#hero" class="nav__logo">💙💗</a>
+    <div class="nav__links">
+      <a href="#countdown">Countdown</a>
+      <a href="#guess">Guess</a>
+      <a href="#expect">Expect</a>
+      <a href="#gallery">Moments</a>
+      <a href="#register" class="nav__cta">RSVP</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section id="hero" class="hero">
+      <div class="hero__half hero__half--pink" aria-hidden="true"></div>
+      <div class="hero__half hero__half--blue" aria-hidden="true"></div>
+      <div class="hero__blend" aria-hidden="true"></div>
+      <div class="hero__image" aria-hidden="true">
+        <img src="./hero%20image.jpg" alt="" />
+      </div>
+
+      <!-- Parallax decor -->
+      <div class="decor" aria-hidden="true">
+        <div class="cloud cloud--1" data-speed="0.15"></div>
+        <div class="cloud cloud--2" data-speed="0.25"></div>
+        <div class="cloud cloud--3" data-speed="0.1"></div>
+        <div class="balloon balloon--pink b1" data-speed="0.3"></div>
+        <div class="balloon balloon--blue b2" data-speed="0.4"></div>
+        <div class="balloon balloon--pink b3" data-speed="0.2"></div>
+        <div class="balloon balloon--blue b4" data-speed="0.35"></div>
+        <div class="balloon balloon--pink b5" data-speed="0.5"></div>
+        <div class="balloon balloon--blue b6" data-speed="0.25"></div>
+        <span class="float-emoji fe1" data-speed="0.3">👟</span>
+        <span class="float-emoji fe2" data-speed="0.2">🧸</span>
+        <span class="float-emoji fe3" data-speed="0.4">🍼</span>
+        <span class="float-emoji fe4" data-speed="0.15">👶</span>
+        <div id="qmarks"></div>
+      </div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">✨ You're invited to a baby shower ✨</p>
+        <h1 class="hero__title heartbeat">
+          <span class="boy">BOY 💙</span>
+          <span class="or">OR</span>
+          <span class="girl">GIRL 💗?</span>
+        </h1>
+        <p class="hero__sub">A tiny little secret is about to change everything...</p>
+
+        <ul class="hero__details glass">
+          <li>📅 <strong>Date:</strong> <span data-fill="date">[EVENT DATE]</span></li>
+          <li>📍 <strong>Location:</strong> <span data-fill="location">[EVENT LOCATION]</span></li>
+          <li>⏰ <strong>Time:</strong> <span data-fill="time">[EVENT TIME]</span></li>
+        </ul>
+
+        <a href="#register" class="btn btn--big" id="joinBtn">JOIN THE CELEBRATION ✨</a>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">scroll<span>⌄</span></div>
+    </section>
+
+    <!-- ================= SUSPENSE METER ================= -->
+    <section id="meter" class="section section--meter">
+      <div class="container reveal">
+        <h2 class="section__title">The Gender <span class="grad">Suspense Meter</span></h2>
+        <div class="meter glass" id="meter-box">
+          <div class="meter__labels">
+            <span class="meter__side meter__side--girl">💗 GIRL</span>
+            <span class="meter__mid" id="meter-mid">❓</span>
+            <span class="meter__side meter__side--boy">BOY 💙</span>
+          </div>
+          <div class="meter__track" role="img" aria-label="Suspense meter hovering between girl and boy">
+            <div class="meter__fill" id="meter-fill"></div>
+            <div class="meter__needle" id="meter-needle">❓</div>
+          </div>
+          <p class="meter__text" id="meter-text">The secret is still safe... 🤫</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COUNTDOWN ================= -->
+    <section id="countdown" class="section section--countdown">
+      <div class="bg-float" aria-hidden="true">
+        <span>🎈</span><span>⭐</span><span>🎈</span><span>✨</span><span>🎈</span><span>⭐</span>
+      </div>
+      <div class="container reveal">
+        <h2 class="section__title section__title--light">THE BIG DAY IS COMING...</h2>
+        <div class="countdown" id="countdown-grid" role="timer" aria-live="off">
+          <div class="cd-card cd-card--pink"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Days</span></div>
+          <div class="cd-card cd-card--blue"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Hours</span></div>
+          <div class="cd-card cd-card--pink"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Minutes</span></div>
+          <div class="cd-card cd-card--blue"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Seconds</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECRET ================= -->
+    <section id="secret" class="section section--secret">
+      <div class="container secret">
+        <div class="secret__text">
+          <h2 class="section__title reveal">WE HAVE A LITTLE SECRET... 🤫</h2>
+          <p class="secret__line reveal" style="--d:.1s">A tiny heartbeat.</p>
+          <p class="secret__line reveal" style="--d:.3s">Tiny hands.</p>
+          <p class="secret__line reveal" style="--d:.5s">Tiny feet.</p>
+          <p class="secret__line secret__line--big reveal" style="--d:.8s">And one <span class="grad">BIG</span> question...</p>
+          <p class="secret__line secret__line--q reveal" style="--d:1.1s">Will our little bundle of joy be a boy or a girl?</p>
+        </div>
+        <div class="collage reveal" style="--d:.3s">
+          <figure class="collage__img collage__img--1 tilt-l"><img data-fallback="👶" loading="lazy" alt="Tiny baby feet" src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80" /></figure>
+          <figure class="collage__img collage__img--2 tilt-r"><img data-fallback="👟" loading="lazy" alt="Tiny baby shoes" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=600&q=80" /></figure>
+          <figure class="collage__img collage__img--3 tilt-l"><img data-fallback="🧸" loading="lazy" alt="Teddy bear" src="https://images.unsplash.com/photo-1566004100631-35d015d6a491?auto=format&fit=crop&w=600&q=80" /></figure>
+          <span class="collage__heart">💞</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GUESS ================= -->
+    <section id="guess" class="section section--guess" aria-labelledby="guess-title">
+      <div class="container">
+        <h2 class="section__title reveal" id="guess-title">MAKE YOUR GUESS! 👀</h2>
+        <div class="guess">
+          <button class="guess__card guess__card--girl reveal" data-guess="girl" type="button">
+            <span class="guess__emoji">💗</span>
+            <span class="guess__name">TEAM GIRL</span>
+            <span class="guess__tag">Pink bows, tiny dresses &amp; sparkles</span>
+          </button>
+          <div class="guess__vs reveal" aria-hidden="true">VS</div>
+          <button class="guess__card guess__card--boy reveal" data-guess="boy" type="button">
+            <span class="guess__emoji">💙</span>
+            <span class="guess__name">TEAM BOY</span>
+            <span class="guess__tag">Little sneakers, bow ties &amp; adventures</span>
+          </button>
+        </div>
+        <p class="guess__msg" id="guess-msg" role="status" aria-live="polite"></p>
+        <div class="guess__score reveal" id="guess-score" hidden>
+          <span>💗 <b id="score-girl">0</b></span>
+          <span class="guess__score-note">your picks this visit</span>
+          <span><b id="score-boy">0</b> 💙</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EXPECT ================= -->
+    <section id="expect" class="section section--expect">
+      <div class="container">
+        <h2 class="section__title reveal">WHAT'S WAITING FOR YOU? 🎉</h2>
+        <div class="cards">
+          <article class="card card--pink reveal" style="--d:.0s">
+            <div class="card__img"><img data-fallback="🎈" loading="lazy" alt="Party balloons" src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84?auto=format&fit=crop&w=600&q=80" /></div>
+            <span class="card__icon">🎈</span>
+            <h3>Fun &amp; Games</h3>
+            <p>Interactive baby shower games and surprises.</p>
+            <span class="card__float">✨</span>
+          </article>
+          <article class="card card--blue reveal" style="--d:.1s">
+            <div class="card__img"><img data-fallback="🎂" loading="lazy" alt="Celebration cake and treats" src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?auto=format&fit=crop&w=600&q=80" /></div>
+            <span class="card__icon">🎂</span>
+            <h3>Delicious Treats</h3>
+            <p>Sweet food, cake, and celebration treats.</p>
+            <span class="card__float">🍰</span>
+          </article>
+          <article class="card card--pink reveal" style="--d:.2s">
+            <div class="card__img"><img data-fallback="🎁" loading="lazy" alt="Gifts and baby clothes" src="https://images.unsplash.com/photo-1522771930-78848d9293e8?auto=format&fit=crop&w=600&q=80" /></div>
+            <span class="card__icon">🎁</span>
+            <h3>Gifts &amp; Love</h3>
+            <p>Celebrate the newest little member of the family.</p>
+            <span class="card__float">💝</span>
+          </article>
+          <article class="card card--blue reveal" style="--d:.3s">
+            <div class="card__img"><img data-fallback="🎊" loading="lazy" alt="Confetti celebration" src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80" /></div>
+            <span class="card__icon">🎊</span>
+            <h3>The Big Reveal</h3>
+            <p>The moment we've all been waiting for!</p>
+            <span class="card__float">🎆</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section id="gallery" class="section section--gallery">
+      <div class="container">
+        <h2 class="section__title reveal">SWEET LITTLE MOMENTS 📸</h2>
+        <div class="masonry">
+          <figure class="m-item m-item--pink reveal"><img data-fallback="👶" loading="lazy" alt="Baby feet" src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=700&q=80" /><figcaption>Tiny toes, big love</figcaption></figure>
+          <figure class="m-item m-item--blue m-item--tall reveal"><img data-fallback="🎈" loading="lazy" alt="Blue and pink balloons" src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=700&q=80" /><figcaption>Pink or blue?</figcaption></figure>
+          <figure class="m-item m-item--pink reveal"><img data-fallback="🧸" loading="lazy" alt="Teddy bear" src="https://images.unsplash.com/photo-1566004100631-35d015d6a491?auto=format&fit=crop&w=700&q=80" /><figcaption>Our cuddly guardian</figcaption></figure>
+          <figure class="m-item m-item--blue reveal"><img data-fallback="👟" loading="lazy" alt="Baby shoes" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=700&q=80" /><figcaption>First little steps</figcaption></figure>
+          <figure class="m-item m-item--pink m-item--tall reveal"><img data-fallback="🍼" loading="lazy" alt="Baby bottle and toys" src="https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?auto=format&fit=crop&w=700&q=80" /><figcaption>Milk &amp; cuddles</figcaption></figure>
+          <figure class="m-item m-item--blue reveal"><img data-fallback="🎊" loading="lazy" alt="Confetti celebration" src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=700&q=80" /><figcaption>Let's celebrate!</figcaption></figure>
+          <figure class="m-item m-item--pink reveal"><img data-fallback="🎁" loading="lazy" alt="Baby clothes" src="https://images.unsplash.com/photo-1522771930-78848d9293e8?auto=format&fit=crop&w=700&q=80" /><figcaption>Tiny outfits</figcaption></figure>
+          <figure class="m-item m-item--blue reveal"><img data-fallback="🎈" loading="lazy" alt="Party balloons" src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84?auto=format&fit=crop&w=700&q=80" /><figcaption>Up, up, and away</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REGISTER ================= -->
+    <section id="register" class="section section--register">
+      <div class="container container--narrow">
+        <h2 class="section__title section__title--light reveal">SAVE YOUR SPOT! 💌</h2>
+        <p class="section__sub reveal">We would love to celebrate this special moment with you!</p>
+
+        <form id="rsvp-form" class="form glass reveal" method="POST" action="https://formspree.io/f/xeaggonj" novalidate>
+          <div class="field">
+            <label for="name">Full Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Your lovely name" autocomplete="name" required />
+            <small class="error" data-for="name"></small>
+          </div>
+
+          <div class="field">
+            <label for="email">Email Address <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            <small class="error" data-for="email"></small>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="phone">Phone Number <span aria-hidden="true">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="+254 700 000 000" autocomplete="tel" required />
+              <small class="error" data-for="phone"></small>
+            </div>
+            <div class="field">
+              <label for="guests">Number of Guests <span aria-hidden="true">*</span></label>
+              <select id="guests" name="guests" required>
+                <option value="">Select…</option>
+                <option>1 (just me)</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5+</option>
+              </select>
+              <small class="error" data-for="guests"></small>
+            </div>
+          </div>
+
+          <fieldset class="field field--radio">
+            <legend>Your Gender Guess <span aria-hidden="true">*</span></legend>
+            <div class="radios">
+              <label class="radio radio--girl"><input type="radio" name="gender_guess" value="Team Girl" required /><span>💗 Team Girl</span></label>
+              <label class="radio radio--boy"><input type="radio" name="gender_guess" value="Team Boy" /><span>💙 Team Boy</span></label>
+              <label class="radio radio--secret"><input type="radio" name="gender_guess" value="Keeping it a surprise" /><span>🤫 I'm keeping it a surprise!</span></label>
+            </div>
+            <small class="error" data-for="gender_guess"></small>
+          </fieldset>
+
+          <div class="field">
+            <label for="message">Special Message for the Parents</label>
+            <textarea id="message" name="message" rows="4" placeholder="Write something sweet…"></textarea>
+          </div>
+
+          <!-- Honeypot (spam trap) — keep hidden -->
+          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <input type="hidden" name="_subject" value="New Baby Shower RSVP 💙💗" />
+
+          <button type="submit" class="btn btn--big btn--full" id="submitBtn">I'M COMING! 🎉</button>
+          <p class="form__status" id="form-status" role="alert"></p>
+        </form>
+
+        <div class="success glass" id="success" hidden>
+          <h3>YOU'RE ON THE LIST! 🎉💙💗</h3>
+          <p>Thank you! We can't wait to celebrate with you.</p>
+          <button class="btn" type="button" id="againBtn">Add another guest</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__fx" aria-hidden="true" id="footer-fx"></div>
+    <div class="container footer__inner">
+      <p class="footer__thanks">Thank you for being part of our beautiful journey. ❤️</p>
+      <h2 class="footer__title">BOY OR GIRL... <br class="br-m" />WE CAN'T WAIT TO FIND OUT! 💙💗</h2>
+      <p class="footer__feet" aria-hidden="true">🐾 🐾 🐾</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
